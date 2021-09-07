@@ -29,12 +29,6 @@ int main(int argc,char *argv[]){
     if(!fout){
         cout<<"Error in output results"<<endl;
     }
-    /*fstream file;
-    file.open("1.data",ios::in);
-    if(!file){
-        perror("cannot open");
-        return EXIT_FAILURE;
-    }else cout<<"開啟"<<endl;*/
 
     int ref,move,col,row;
     bool valid=true;
@@ -42,11 +36,7 @@ int main(int argc,char *argv[]){
     string a,b;
 
     fin>>row>>col;
-    //file>>row>>col;
-    //fout<<"col="<<col<<endl;
-    //fout<<"row="<<row<<endl;
     fin>>num;
-    //file>>num;
     matrix temp(row,col);
 
     while(num[0]!='E'&&valid){
@@ -247,20 +237,14 @@ int main(int argc,char *argv[]){
 
                 int left_row=this_min;
                 //把方塊放入主陣列
-                //cout<<"temp.top= "<<temp.top<<endl;
-                //cout<<"min_d= "<<min_d<<endl;
-                //cout<<"left_row= "<<left_row<<endl;
                 int addrow=temp.top-min_d+1-left_row;
                 for(int i=1;i<=4;i++){
                     if(drop.arr[i][0]!=0){
                         int add_row=addrow+i;
-                        //cout<<"addrow= "<<add_row<<endl;
                         auto it=temp.arr[add_row].begin();
                         while(*it!=0) it++;
                         for(int j=0;drop.arr[i][j]!=0;j++){
-                            //cout<<"i= "<<i<<" j= "<<j<<endl;
                             *it=drop.arr[i][j];
-                            //cout<<"*it= "<<*it<<endl;
                             it++;
                         }
                         if(add_row>temp.top) temp.top=add_row;
